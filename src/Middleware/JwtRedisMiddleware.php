@@ -21,9 +21,12 @@ class JwtRedisMiddleware
         $response = $next($request);
 
         try {
-            foreach (config('jwt_redis.route_except') as $excluded_route) {
-                if ($request->path() === $excluded_route) {
-                    return $response;
+            $excludedRoutes = config('jwt_redis.route_except');
+            if($excludedRoutes){
+                foreach ($excludedRoutes as $excludedRoute) {
+                    if ($request->path() === $excludedRoute) {
+                        return $response;
+                    }
                 }
             }
         
