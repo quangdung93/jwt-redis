@@ -46,7 +46,7 @@ class JwtRedis{
 
     public function hashKey(array $params):string
     {
-        return md5(implode('.', $params));
+        return sha1(implode('.', $params));
     }
 
 }

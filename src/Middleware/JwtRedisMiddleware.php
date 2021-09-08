@@ -3,9 +3,9 @@
 namespace Ajax\JwtRedis\Middleware;
 
 use Closure;
-use Illuminate\Http\Response;
-use Illuminate\Support\Facades\Auth;
 use Ajax\JwtRedis\Facades\JwtRedis;
+use Illuminate\Support\Facades\Auth;
+use Ajax\JwtRedis\Exceptions\JwtRedisException;
 
 class JwtRedisMiddleware
 {
@@ -39,14 +39,10 @@ class JwtRedisMiddleware
                 }
             }
 
-            return response()->json([
-                'error' => 'API request Invalid.',
-            ], Response::HTTP_UNAUTHORIZED);
+            throw new JwtRedisException();
         
         }catch (\Exception $e) {
-            return response()->json([
-                'error' => $e->getMessage(),
-            ], Response::HTTP_UNAUTHORIZED);
+            throw new JwtRedisException();
         }
         
     }
