@@ -1,0 +1,29 @@
+{
+    "name": "quangdung93/jwt-redis",
+    "description": "This package to add JSON Web Token to Redis",
+    "authors": [
+        {
+            "name": "Ajax",
+            "email": "quangdung16393@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Ajax\\JwtRedis\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Ajax\\JwtRedis\\JwtRedisServiceProvider"
+            ],
+            "aliases": {
+                "JwtRedis": "Ajax\\JwtRedis\\Facades\\JwtRedis"
+            }
+        }
+    },
+    "homepage": "https://github.com/spatie/laravel-permission",
+    "minimum-stability": "dev",
+    "license": "MIT"
+}
